@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Golf Handicap Calculator</title>
+</head>
+<body>
+    <h1>🏌️ Golf Handicap Calculator</h1>
+
+    <h2>Your Handicap</h2>
+    <p th:text="${handicap}">0</p>
+
+    <h2>Add a New Score</h2>
+    <form action="/add" method="post">
+        <label>Date: <input type="date" name="date" required></label><br>
+        <label>Score: <input type="number" name="score" required></label><br>
+        <button type="submit">Add Score</button>
+    </form>
+
+    <h2>Past Scores</h2>
+    <ul>
+        <li th:each="score : ${scores}" th:text="|[[${score.date}]] - [[${score.score}]]|"></li>
+    </ul>
+</body>
+</html>
